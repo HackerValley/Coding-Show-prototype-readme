@@ -125,7 +125,7 @@ project {
 ```
 
 ###api接口设计
-[*rap*](http://http://rap.taobao.org/)
+[*rap*](http://rap.taobao.org/)
 
 ###分工
 + 第三方账号对接
