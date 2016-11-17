@@ -1,133 +1,150 @@
 #server端说明
 
-###服务器环境
-1.nodejs版本 [https://nodejs.org/en/](https://nodejs.org/en/)  6.9.1 LTS
-2.框架 express 4
-3.数据库  mongo
-4.数据操作mongoose
-~~5.redis~~
 ###后端开发任务
-- 模型设计
-- ~~路由设计~~controller api设计
--  基础代码编写
-- 功能模块
-导航条登入状态
-导航条未登入状态
-开源项目（主页）
-项目详情页
-注册     第三方登录
-登入
-添加项目页
-我发布的项目列表页
-我发布的项目详情页
-修改项目页
-我开发的项目列表页
-个人设置页
-后台页面（开发此页面请先联系@易燃询问用途）
+- 后端协作约定及代码规范
+- 模型设计 Model **Resolved**
+- ~~路由设计controller~~ api接口设计 **Inprocess**
+- 后台脚手架Demo **Inprocess**
+- 功能模块 **Resolved**
+ + 登录注册功能 
+ + project部分
+ + 留言板功能
+ +后台页面（开发此页面请先联系@易燃询问用途）？
+- 基础代码编写 **todo**
 
-###目录结构
-**~~使用[*express生成器*](http://expressjs.com/zh-cn/starter/generator.html)~~**
->//安装express-generator
-npm install express-generator -g  
- //建立server文件夹   
-express --view=ejs server       
-再加 models  controllers文件夹
+##后端协作约定及代码规范
 
-**server目录结构**
-讨论版本
-```
-├── index.js //入口文件
-├── package.json
-├── public //静态文件库
-│   ├── images
-│   ├── javascripts
-│   └── stylesheets
-│       └── style.css
-├── routes//更新为controllers
-│   ├── index.js
-│   └── users.js
-├── models //新添加
-│   ├── projects.js
-│   └── users.js
-└── views //渲染模板
-    ├── error.ejs
+###服务器环境
+1.nodejs版本 [https://nodejs.org/en/](https://nodejs.org/en/)  6.9.1 LTS;
+2.框架 express 4.14.0;
+3.数据库  mongodb 3.2.10; 
+4.数据操作mongoose;
+5.redis 3.2.100 [*windows下载*](https://github.com/MSOpenTech/redis/releases).
 
-    ├── index.ejs
-
-    └── layout.ejs
+###代码约定
+1.JS使用ES2015(ES6);
+2.代码工具ESLint;
+3.规范：airbnb.
+##数据模型
+###用户数据模型
 ```
-server文件夹结构（目前）
-```
-├─index.js //入口文件
-├─package.json 
-│  
-├─config //数据库配置
-│      index.js
-│      
-├─controllers //api接口
-│      index.js
-│      
-├─models //数据模型
-│      project.js
-│      user.js
-│                  
-├─public 静态资源
-│  ├─images
-│  ├─javascripts
-│  └─stylesheets
-│          style.css
-│          
-└─views 渲染模板
-        error.ejs
-        index.ejs
-        project.ejs
-        
-
-```
-###数据模型
-+ 用户数据模型
-```
-users {
-    _id: String,
-    username: String, //用户名
-    nickname: String, //昵称  第三方登录时，存储第三方用户的昵称
-    passwd: String, //密码
-    level: Number, //用户等级
-    telephone: String, //用户电话
-    email: String, //用户邮箱
-    skill: Array, //技能
-    access_token: String,//第三方token
-    expire_time: String, //token的失效时间
-    sns_type: Number,//第三方用户类型 微信 qq。。。 
-    avatar: String, //头像 
-    create_time: Date, //创建时间
-    last_login_time: Date //最后登录时间
+user_model {
+  _id: String, //OjectId总报错，先用String吧
+  username: String, //用户名
+  nickname: String, //昵称  第三方登录时，存储第三方用户的昵称
+  passwd: String, //密码
+  level: Number, //用户等级
+  telephone: String, //用户电话
+  email: String, //用户邮箱
+  skill: Array, //技能
+  access_token: String, //第三方token
+  expire_time: String, //token的失效时间
+  sns_type: Number, //第三方用户类型 微信 qq。。。 
+  avatar: String, //头像 
+  create_time: Date, //创建时间
+  last_login_time: Date //最后登录时间
 }
 ```
 
-+ 项目数据模型
+###项目数据模型
 
 ```
-project {
-  _id: String, //项目id
+project_model {
+  _id: String, //项目id OjectId总报错，先用String吧
   uid: String, //上传的用户 id
   project_name: String, //项目名称
   description: String, //一句话描述
   detail: String, //简介
   imagePath: Array, //项目图片 字符串数组
   project_link: String, //链接
+  developers: Array,//开发者
+  develper_count: Number,//开发者人数
   star_count: Number, //点赞数
-  star_users:Array, //点赞用户 存储用户id
+  star_users: Array, //点赞用户 存储用户id
   status: Number, //可用/禁用
   create_time: Date, //创建时间
   mod_time: Date //最后修改时间
 }
 ```
-
-###api接口设计
+###开发者数据模型
+```
+developer_model {
+  _id: String, //OjectId总报错，先用String吧
+  uid: String, //用户id
+  pid: String, //参与项目id
+  dev_skills: Array //开发技术栈
+}
+```
+###留言板数据模型 
+```
+board_model {
+  _id: String, //OjectId总报错，先用String吧
+  pid: String, //项目id
+  boards: Object //评论
+}
+```
+##api接口
 [*rap*](http://rap.taobao.org/)
+目前版本0.0.0.21
+[*API*](export.html)
+##目录结构
 
-###分工
-+ 第三方账号对接
-+ （如果需要 ） 账号注册登录
-+ restful 
+**~~使用[*express生成器*](http://expressjs.com/zh-cn/starter/generator.html)~~**
+>~~//安装express-generator~~
+~~npm install express-generator -g~~
+~~//建立server文件夹~~
+~~express --view=ejs server~~      
+~~再加 models  controllers文件夹~~
+
+###后台脚手架Demo目录结构
+```
+│  .babelrc  //babel配置文件
+│  export.html  //API设计页
+│  favicon.ico  //favico
+│  index.js  //入口文件
+│  package.json  
+│  ReadMe.md  
+│  server.js  
+│  
+├─bin  
+│  └─www
+├─config  //配置目录
+│      config.example.json
+│      config.json
+│      mongo_config.js
+│      redis_config.js
+│      
+├─controllers  //数据处理目录
+│      board_controllers.js
+│      developer_controllers.js
+│      project_controllers.js
+│      user_controllers.js
+│      
+├─models  //数据模型
+│      board_model.js
+│      developer_model.js
+│      project_model.js
+│      user_model.js
+│
+├─public //静态资源
+│    
+├─routes  //路由目录
+│      board_routes.js
+│      developer_routes.js
+│      index.js
+│      project_routes.js
+│      user_routes.js
+│      
+├─test  //测试目录
+│  └─mocha
+└─views  //模板目录
+        error.ejs
+        index.ejs
+        project.ejs
+```
+
+##分工
+ + 登录注册功能  高阳 苏汉宇
+ + project部分 临渊
+ + 留言板功能 黄圣森
+ + 后台页面（开发此页面请先联系@易燃询问用途）？

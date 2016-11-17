@@ -1,7 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
-module.exports = mongoose.model('project', new Schema({
+export default mongoose.model('project', new Schema({
   _id: String,
   username: String, //用户名
   nickname: String, //昵称  第三方登录时，存储第三方用户的昵称
