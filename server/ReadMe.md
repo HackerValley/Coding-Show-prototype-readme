@@ -92,7 +92,7 @@ board_model {
 ###后台脚手架Demo目录结构
 ```
 │  .babelrc  //babel配置文件
-│  export.html  //API设计页
+│  .eslintrc //eslint配置文件
 │  favicon.ico  //favico
 │  index.js  //入口文件
 │  package.json  
@@ -107,12 +107,18 @@ board_model {
 │      mongo_config.js
 │      redis_config.js
 │      
-├─controllers  //数据处理目录
+├─controllers  //业务逻辑处理
 │      board_controllers.js
 │      developer_controllers.js
 │      project_controllers.js
 │      user_controllers.js
-│      
+│
+├─handlers //数据处理
+│      board_handlers.js
+│      developer_handlers.js
+│      project_handlers.js
+│      user_handlers.js
+│            
 ├─models  //数据模型
 │      board_model.js
 │      developer_model.js
@@ -122,11 +128,7 @@ board_model {
 ├─public //静态资源
 │    
 ├─routes  //路由目录
-│      board_routes.js
-│      developer_routes.js
 │      index.js
-│      project_routes.js
-│      user_routes.js
 │      
 ├─test  //测试目录
 │  └─mocha
