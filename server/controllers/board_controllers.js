@@ -1,5 +1,6 @@
-import boardModel from '../models/board_model';
+import boardHandlers from '../handlers/board_handlers.js';
 
-export default function () {
-  
+export default function (app) {
+  //app.get();
+  //app.post();
 }

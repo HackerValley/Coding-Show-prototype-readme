@@ -85,16 +85,9 @@ board_model {
 ```
 ##api接口
 [*rap*](http://rap.taobao.org/)
-目前版本0.0.0.21
-[*API*](export.html)
-##目录结构
+目前版本0.0.0.23
 
-**~~使用[*express生成器*](http://expressjs.com/zh-cn/starter/generator.html)~~**
->~~//安装express-generator~~
-~~npm install express-generator -g~~
-~~//建立server文件夹~~
-~~express --view=ejs server~~      
-~~再加 models  controllers文件夹~~
+##目录结构
 
 ###后台脚手架Demo目录结构
 ```

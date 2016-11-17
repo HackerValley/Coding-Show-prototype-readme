@@ -23,5 +23,12 @@
     "mongoose": "^4.6.7",
     "morgan": "~1.7.0",
     "redis": "^2.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1"
   }
 }

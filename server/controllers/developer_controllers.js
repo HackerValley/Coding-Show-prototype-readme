@@ -1,5 +1,5 @@
-import developerModel from '../models/developer_model';
+import developerHandlers from '../handlers/developer_handlers.js';
 
-export default function () {
-  
+export default function (app) {
+
 }
